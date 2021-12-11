@@ -1,0 +1,67 @@
+<%- include('partials/_header.ejs'); -%>
+
+
+<!--NAVBAR-->
+<div class="navbar1">
+    <div class="navbar-inner">
+        <a href="./index.html">Home</a>
+        <a href="./transactions.html">Transactions</a>
+        <a href="#">Dashboard</a>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Expense</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="/add" method="post">
+
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control" id="date"
+                            aria-describedby="dateHelp" placeholder="Enter date of the expense" value="2021-12-10">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categories">Category</label>
+                        <select class="form-control" id="categories">
+                            <option>Rent</option>
+                            <option>Pets</option>
+                            <option>Transport</option>
+                            <option>Suscriptions</option>
+                            <option>Housekepping</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Note</label>
+                        <input type="text" class="form-control" id="notes"
+                            placeholder="Details of the expense">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount_spend">Amount</label>
+                        <input type="number" class="form-control" id="amount_spend"
+                            placeholder="Amount of the expense">
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--FLOATING BUTTOM-->
+<a href="#" class="float"><img class="add" src="/images/plus.svg" data-toggle="modal" data-target="#myModal" /></a>
+
+<%- include('partials/_footer.ejs'); -%>
