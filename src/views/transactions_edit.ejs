@@ -1,0 +1,44 @@
+<%- include('partials/_header.ejs'); -%>
+<pre><%= data.categories %></pre>
+
+<form action="/update/<%= data.id %>" method="post" id="my-form-id">
+
+    <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" class="form-control" id="date" value="<%= data.date.toISOString().split('T')[0]; %>"
+            aria-describedby="dateHelp"  name="date">
+    </div>
+
+    <div class="form-group">
+        <label for="categories">Category</label>
+        <select class="form-control" id="categories" name="categories">
+            <option value='1'>Rent</option>
+            <option value='2'>Groseries</option>
+            <option value='3'>Entertainment</option>
+            <option value='4'>Pets</option>
+            <option value='5'>Transport</option>
+            <option value='6'>Housekeeping</option>
+            <option value='7'>Public Utilities</option>
+            <option value='8'>Gym</option>
+            <option value='9'>Suscriptions</option>
+            <option value='10'>Others</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="notes">Note</label>
+        <input type="text" class="form-control" id="notes" value="<%= data.notes %>"name="notes">
+    </div>
+
+    <div class="form-group">
+        <label for="amount_spend">Amount</label>
+        <input type="number" class="form-control" id="amount_spend" value="<%= data.amount_spend %>" name="amount_spend"
+            inputmode="numeric" pattern="[0-9]*">
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </div>
+
+</form>
+
+<%- include('partials/_footer.ejs'); -%>

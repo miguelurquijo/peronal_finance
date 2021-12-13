@@ -1,3 +1,11 @@
+body {
+    background-color: #fafafa !important;
+}
+
+table {
+    table-layout: fixed;
+    word-wrap: break-word;     
+}
 
 .flex-container-header {
     height: 100%;
@@ -49,7 +57,6 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-
 }
 
 .avatar {
@@ -63,14 +70,12 @@
     padding-right: 10px;
     padding-top: 10%;
     padding-bottom: 20%;
-    background-color: blue;
-    
+    background-color: blue; 
 }
 
 .month_picker {
     margin-left: 10px;
     background: #f2f2f2;
-
 }
 
 .icons {
@@ -83,7 +88,7 @@
 	position:fixed;
 	width:50px;
 	height:50px;
-	bottom:60px;
+	bottom:80px;
 	right:20px;
 	background-color:#0C9;
 	color:#FFF;
@@ -98,17 +103,27 @@
 
 .add{
     height: 100%;
-    padding: 20%;}
+    padding: 20%;
+}
+
+.navbar-container {
+    align-items: center;
+    display:flex;
+    justify-content:center
+}
 
 .navbar1 {
     overflow: hidden;
     background-color: #f2f2f2;
     position: fixed;
-    bottom: 0;
-    width: 100%;
+    bottom: 16px;
+    width: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-left: 32px;
+    padding-right: 32px;
+    border-radius: 30px;
 }
 
 .navbar1 a {
@@ -118,19 +133,17 @@
     padding: 14px 14px;
     text-decoration: none;
     font-size: 12px;
-    margin: 0px auto;
+    margin: 0px auto;   
 }
 
 .navbar1 a:hover {
     background: #f1f1f1;
     color: black;
-
 }
 
 .card {
     margin-bottom: 10px;
     background: #f1f1f1;
-
 }
 
 .modal-dialog {
