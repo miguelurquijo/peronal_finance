@@ -13,12 +13,12 @@
                     <div class="form-group">
                         <label for="date">Date</label>
                         <input type="date" class="form-control" id="date"
-                            aria-describedby="dateHelp" placeholder="Enter date of the expense" name="date">
+                            aria-describedby="dateHelp" placeholder="Enter date of the expense" name="date" required>
                     </div>
                 
                     <div class="form-group">
                         <label for="categories">Category</label>
-                        <select class="form-control" id="categories" name="categories">
+                        <select class="form-control" id="categories" name="categories" required>
                             <option value='1'>Rent</option>
                             <option value='2'>Groseries</option>
                             <option value='3'>Entertainment</option>
@@ -35,14 +35,14 @@
                     <div class="form-group">
                         <label for="notes">Note</label>
                         <input type="text" class="form-control" id="notes" name="notes"
-                            placeholder="Details of the expense">
+                            placeholder="Details of the expense" required>
                     </div>
                 
                     <div class="form-group">
                         <label for="amount_spend">Amount</label>
                         <input type="number" class="form-control" id="amount_spend" name="amount_spend"
                             placeholder="Amount of the expense" inputmode="numeric"
-                            pattern="[0-9]*">
+                            pattern="[0-9]*" required>
                     </div>
                     <div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" form="my-form-id">Close</button>
@@ -61,7 +61,7 @@
 
 <!--NAVBAR-->
 <div class="navbar-container">
-    <div class="navbar1">
+    <div class="navbar1 shadow p-3">
         <div class="navbar-inner">
             <a href="#">Home</a>
             <a href="#">Transactions</a>

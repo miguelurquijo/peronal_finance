@@ -46,8 +46,12 @@ controller.delete = (req, res) => {
 //funcion para editar transacciones
 controller.edit = (req, res) => {
     const { id } = req.params;
+    console.log(id);
     req.getConnection((err, conn) => {
-        conn.query('SELECT * FROM transactions WHERE id = ?', [id], (err, transaction) => {
+        conn.query(`SELECT transactions.id, date, notes, amount_spend, categories.name  as cName, categories.id as cId
+        FROM transactions  
+        LEFT JOIN categories 
+        ON categories.id = transactions.categories WHERE transactions.id = ?`, [ id ], (err, transaction) => {
             res.render('transactions_edit', {
                 data: transaction[0]
             });
