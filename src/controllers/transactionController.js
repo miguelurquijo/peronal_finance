@@ -6,7 +6,8 @@ controller.list = (req, res) => {
         conn.query(`SELECT transactions.id, date, notes, amount_spend, categories.name  as cName
                 FROM transactions  
                 LEFT JOIN categories 
-                ON categories.id = transactions.categories`, (err, transactions) => {
+                ON categories.id = transactions.categories
+                ORDER BY date desc`, (err, transactions) => {
             if (err) {
                 res.json(err);
             }

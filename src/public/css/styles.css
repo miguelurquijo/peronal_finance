@@ -2,6 +2,10 @@ body {
     background-color: #fafafa !important;
 }
 
+h1 {
+    padding: 32px;
+}
+
 table {
     table-layout: fixed;
     word-wrap: break-word;     
@@ -141,12 +145,55 @@ table {
     color: black;
 }
 
+.transactions-container {
+}
+
 .card {
-    margin-bottom: 10px;
-    background: #f1f1f1;
+    background: #fafafa;
+    margin-left: 32px;
+    margin-right: 32px;
+    border-right: none !important;
+    border-left: none !important;
+}
+
+.card-body {
+    background: #fafafa;
+    width: 100px;
+
+    
+}
+
+.card-body-img {
+    width: 60px;
+    background: #fafafa;
+}
+
+.card-body-amount {
+    background: #fafafa;
+    text-align: right;
+    margin-right: 16px;
+    margin-top: 10px;
+    align-items: middle;
 }
 
 .modal-dialog {
     top: 20px
+}
+
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+    background: #fafafa;
+    /* border-bottom: 0.5px solid gray; */
+}
+
+
+.transaction_image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid purple;
+    margin: 15%;
+
 }
 
