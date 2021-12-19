@@ -1,67 +1,78 @@
 <%- include('partials/_header.ejs'); -%>
 
+<div class="header d-flex bd-highlight">
+    <div class="p-2 flex-grow-1 bd-highlight">    
+        <h2>Transactions</h2>    
+    </div>
+    <div class="p-2 bd-highlight"><h2>X</h2></div>
+    <div class="p-2 bd-highlight"><h2>Q</h2></div>
+</div>
 
-<!--NAVBAR-->
-<div class="navbar1">
-    <div class="navbar-inner">
-        <a href="./index.html">Home</a>
-        <a href="./transactions.html">Transactions</a>
-        <a href="#">Dashboard</a>
+
+<!-- NOTAS: swiper update funciona pero con id quemado. Falta actualizar el swipe de delete -->
+<!-- TESTING SLIDER -->
+<div class="list-group">
+    <div>
+        <ul id="demo">
+            <% if (data) { %>
+                <% for (var i = 0; i < data.length; i++) { %>
+                    <li>
+                        <a id="edit_href" href="/update/<%= data[i].id %>" class="list-group-item list_group_item_styles list-group-item-action" aria-current="true">
+                            <div class="d-flex bd-highlight">
+                                <div class="p-2 bd-highlight">
+                                    <img class="transaction_image" src="http://via.placeholder.com/50x50" alt="Card image cap">
+                                </div>
+                                <div class="p-2 flex-grow-1 bd-highlight">
+                                    <h4 class="card-title" id="transaction_id"><%= data[i].notes -%></h4>
+                                    <p class="card-text text-muted"><%= data[i].cName -%></p>
+                                </div>
+                                <div class="p-2 bd-highlight">
+                                    <h4 class="card-title"><%= data[i].amount_spend.toLocaleString("en-US", {
+                                        style: "currency",
+                                        currency: "USD",
+                                        minimumFractionDigits: 0
+                                    }); -%>
+                                    </h4>
+                                    <p class="card-text-style card-text"><%= data[i].date.toLocaleDateString("en-US"); -%></p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                <% }; %>
+            <% } %> %>
+        </ul>
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">New Expense</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form action="/add" method="post">
-
-                    <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="date" class="form-control" id="date"
-                            aria-describedby="dateHelp" placeholder="Enter date of the expense" value="2021-12-10">
+<!-- LIST OF ALL TRANSATIONS
+<div class="list-group">
+    <% if (data) { %>
+        <% for (var i = 0; i < data.length; i++) { %>
+            <a href="/update/<%= data[i].id %>" class="list-group-item list_group_item_styles list-group-item-action" aria-current="true">
+                <div class="d-flex bd-highlight">
+                    <div class="p-2 bd-highlight">
+                        <img class="transaction_image" src="http://via.placeholder.com/50x50" alt="Card image cap">
                     </div>
-
-                    <div class="form-group">
-                        <label for="categories">Category</label>
-                        <select class="form-control" id="categories">
-                            <option>Rent</option>
-                            <option>Pets</option>
-                            <option>Transport</option>
-                            <option>Suscriptions</option>
-                            <option>Housekepping</option>
-                        </select>
+                    <div class="p-2 flex-grow-1 bd-highlight">
+                        <h4 class="card-title"><%= data[i].notes -%></h4>
+                        <p class="card-text text-muted"><%= data[i].cName -%></p>
                     </div>
-
-                    <div class="form-group">
-                        <label for="notes">Note</label>
-                        <input type="text" class="form-control" id="notes"
-                            placeholder="Details of the expense">
+                    <div class="p-2 bd-highlight">
+                        <h4 class="card-title"><%= data[i].amount_spend.toLocaleString("en-US", {
+                            style: "currency",
+                            currency: "USD",
+                            minimumFractionDigits: 0
+                        }); -%></h4>
+                        <p class="card-text-style card-text"><%= data[i].date.toLocaleDateString("en-US"); -%></p>
                     </div>
+                </div>
+            </a>
+        <% }; %>
+    <% } %> %>
+</div> -->
 
-                    <div class="form-group">
-                        <label for="amount_spend">Amount</label>
-                        <input type="number" class="form-control" id="amount_spend"
-                            placeholder="Amount of the expense">
-                    </div>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--FLOATING BUTTOM-->
-<a href="#" class="float"><img class="add" src="/images/plus.svg" data-toggle="modal" data-target="#myModal" /></a>
+<script>
+   
+</script> 
 
 <%- include('partials/_footer.ejs'); -%>

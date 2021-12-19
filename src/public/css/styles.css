@@ -1,3 +1,47 @@
+body {
+    background-color: #fafafa !important;
+}
+
+ul {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #fafafa !important;
+}
+
+li {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #fafafa !important;
+}
+
+.header {
+    padding: 32px;
+}
+
+h4 {
+    color: #4c4c4c !important;
+}
+
+p {
+    color: #7c7c7c !important;
+}
+.list_group_item_styles {
+    background-color: #fafafa !important;
+    border: none !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+}
+
+.card-text-style {
+    text-align: right;
+}
+
+/* TRANSACTIONS TABLE */
+
+table {
+    table-layout: fixed;
+    word-wrap: break-word;     
+}
 
 .flex-container-header {
     height: 100%;
@@ -29,9 +73,8 @@
     /* border-width: 1px;
     border-style: solid;
     border-color: black; */
-
-
 }
+
 .flex-item-user {
     padding: 5px;
     color: black;
@@ -49,7 +92,6 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-
 }
 
 .avatar {
@@ -58,19 +100,19 @@
     border-radius: 50%;
 }
 
+
+/* TRANSACTIN CARDS */
 .container_budget_cards{
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10%;
     padding-bottom: 20%;
-    background-color: blue;
-    
+    background-color: blue; 
 }
 
 .month_picker {
     margin-left: 10px;
     background: #f2f2f2;
-
 }
 
 .icons {
@@ -79,13 +121,14 @@
     margin: 10px;
 }
 
+/* ADD FLOATING BUTTON */
 .float{
 	position:fixed;
 	width:50px;
 	height:50px;
-	bottom:60px;
-	right:20px;
-	background-color:#0C9;
+	bottom:120px;
+	right:32px;
+	background-color:#5350F6    ;
 	color:#FFF;
 	border-radius:50%;
 	text-align:center;
@@ -98,17 +141,28 @@
 
 .add{
     height: 100%;
-    padding: 20%;}
+    padding: 20%;
+}
+
+/* NAVIGATION BAR */
+.navbar-container {
+    align-items: center;
+    display:flex;
+    justify-content:center;
+}
 
 .navbar1 {
     overflow: hidden;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     position: fixed;
-    bottom: 0;
-    width: 100%;
+    bottom: 32px;
+    width: 320px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-left: 32px;
+    padding-right: 32px;
+    border-radius: 30px;
 }
 
 .navbar1 a {
@@ -118,22 +172,63 @@
     padding: 14px 14px;
     text-decoration: none;
     font-size: 12px;
-    margin: 0px auto;
+    margin: 0px auto;   
 }
 
 .navbar1 a:hover {
     background: #f1f1f1;
     color: black;
+}
 
+.transactions-container {
 }
 
 .card {
-    margin-bottom: 10px;
-    background: #f1f1f1;
+    background: #fafafa;
+    margin-left: 32px;
+    margin-right: 32px;
+    border-right: none !important;
+    border-left: none !important;
+}
 
+
+.card-body {
+    background: #fafafa;
+    width: 100px;
+
+    
+}
+
+.card-body-img {
+    width: 60px;
+    background: #fafafa;
+}
+
+.card-body-amount {
+    background: #fafafa;
+    text-align: right;
+    margin-right: 16px;
+    margin-top: 10px;
+    align-items: middle;
 }
 
 .modal-dialog {
     top: 20px
+}
+
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+    background: #fafafa;
+    /* border-bottom: 0.5px solid gray; */
+}
+
+
+.transaction_image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #5350F6
+    ;
 }
 

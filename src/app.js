@@ -23,6 +23,10 @@ app.use(myConnection(mysql, {
     database: 'personal_finances_db'
 }, 'single'));
 
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
+
 //routes
 app.use('/', transactionRoutes); //en el tutorial lo llaman customerRouter
 
