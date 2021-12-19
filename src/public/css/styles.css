@@ -2,9 +2,41 @@ body {
     background-color: #fafafa !important;
 }
 
-h1 {
+ul {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #fafafa !important;
+}
+
+li {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #fafafa !important;
+}
+
+.header {
     padding: 32px;
 }
+
+h4 {
+    color: #4c4c4c !important;
+}
+
+p {
+    color: #7c7c7c !important;
+}
+.list_group_item_styles {
+    background-color: #fafafa !important;
+    border: none !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+}
+
+.card-text-style {
+    text-align: right;
+}
+
+/* TRANSACTIONS TABLE */
 
 table {
     table-layout: fixed;
@@ -41,9 +73,8 @@ table {
     /* border-width: 1px;
     border-style: solid;
     border-color: black; */
-
-
 }
+
 .flex-item-user {
     padding: 5px;
     color: black;
@@ -69,6 +100,8 @@ table {
     border-radius: 50%;
 }
 
+
+/* TRANSACTIN CARDS */
 .container_budget_cards{
     padding-left: 10px;
     padding-right: 10px;
@@ -88,13 +121,14 @@ table {
     margin: 10px;
 }
 
+/* ADD FLOATING BUTTON */
 .float{
 	position:fixed;
 	width:50px;
 	height:50px;
 	bottom:120px;
 	right:32px;
-	background-color:#0C9;
+	background-color:#5350F6    ;
 	color:#FFF;
 	border-radius:50%;
 	text-align:center;
@@ -110,6 +144,7 @@ table {
     padding: 20%;
 }
 
+/* NAVIGATION BAR */
 .navbar-container {
     align-items: center;
     display:flex;
@@ -156,6 +191,7 @@ table {
     border-left: none !important;
 }
 
+
 .card-body {
     background: #fafafa;
     width: 100px;
@@ -192,8 +228,7 @@ table {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 1px solid purple;
-    margin: 15%;
-
+    border: 1px solid #5350F6
+    ;
 }
 

@@ -30,7 +30,10 @@
                 inputmode="numeric" pattern="[0-9]*">
         </div>
         <div>
-            <button type="submit" class="btn btn-primary">Edit</button>
+            <div class="d-flex justify-content-evenly">
+                <a href="/delete/<%= data.id %>" class="btn btn-danger">Delete</a>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
         </div>
 </form>  
 

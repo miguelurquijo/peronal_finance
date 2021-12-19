@@ -27,7 +27,7 @@ controller.add = (req, res) => {
         if (err) {
             res.json(err);
         }
-        console.log(transaction);
+        // console.log(transaction);
         res.redirect('/');
     });
 });
@@ -47,7 +47,7 @@ controller.delete = (req, res) => {
 //funcion para editar transacciones
 controller.edit = (req, res) => {
     const { id } = req.params;
-    console.log(id);
+    // console.log(id);
     req.getConnection((err, conn) => {
         conn.query(`SELECT transactions.id, date, notes, amount_spend, categories.name  as cName, categories.id as cId
         FROM transactions  

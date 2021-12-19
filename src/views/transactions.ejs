@@ -1,60 +1,78 @@
 <%- include('partials/_header.ejs'); -%>
-<div>
-    <h1>Transactions</h1>
+
+<div class="header d-flex bd-highlight">
+    <div class="p-2 flex-grow-1 bd-highlight">    
+        <h2>Transactions</h2>    
+    </div>
+    <div class="p-2 bd-highlight"><h2>X</h2></div>
+    <div class="p-2 bd-highlight"><h2>Q</h2></div>
 </div>
 
-<!-- TRANSACTIONS AS CARDS -->
-<div class="transactions-container">
-<% if (data) { %>
-    <% for (var i = 0; i < data.length; i++) { %>
-        <div class="card">
-            <div class="card-horizontal">
-                <div class="card-body-img">
-                    <img class="transaction_image" src="http://via.placeholder.com/50x50" alt="Card image cap">
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title"><%= data[i].notes -%></h4>
-                    <p class="card-text"><%= data[i].cName -%></p>
-                </div>
-                <div class="card-body-amount">
-                    <h5 class="card-title">$ <%= data[i].amount_spend -%></h5>
-                    <p class="card-text"><%= data[i].date.toLocaleDateString("en-US"); -%></p>
 
-                </div>
-            </div>
-        </div>
-    <% }; %>
-<% } %> %>
+<!-- NOTAS: swiper update funciona pero con id quemado. Falta actualizar el swipe de delete -->
+<!-- TESTING SLIDER -->
+<div class="list-group">
+    <div>
+        <ul id="demo">
+            <% if (data) { %>
+                <% for (var i = 0; i < data.length; i++) { %>
+                    <li>
+                        <a id="edit_href" href="/update/<%= data[i].id %>" class="list-group-item list_group_item_styles list-group-item-action" aria-current="true">
+                            <div class="d-flex bd-highlight">
+                                <div class="p-2 bd-highlight">
+                                    <img class="transaction_image" src="http://via.placeholder.com/50x50" alt="Card image cap">
+                                </div>
+                                <div class="p-2 flex-grow-1 bd-highlight">
+                                    <h4 class="card-title" id="transaction_id"><%= data[i].notes -%></h4>
+                                    <p class="card-text text-muted"><%= data[i].cName -%></p>
+                                </div>
+                                <div class="p-2 bd-highlight">
+                                    <h4 class="card-title"><%= data[i].amount_spend.toLocaleString("en-US", {
+                                        style: "currency",
+                                        currency: "USD",
+                                        minimumFractionDigits: 0
+                                    }); -%>
+                                    </h4>
+                                    <p class="card-text-style card-text"><%= data[i].date.toLocaleDateString("en-US"); -%></p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                <% }; %>
+            <% } %> %>
+        </ul>
+    </div>
 </div>
 
-<!-- TRANSACTIONS AS TABLE -->
-<!-- <table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>date</th>
-            <th>categories</th>
-            <th>notes</th>
-            <th>amount_spend</th>
-            <th>actions</th>
-        </tr>
-    </thead>
-    <tbody>
+<!-- LIST OF ALL TRANSATIONS
+<div class="list-group">
+    <% if (data) { %>
+        <% for (var i = 0; i < data.length; i++) { %>
+            <a href="/update/<%= data[i].id %>" class="list-group-item list_group_item_styles list-group-item-action" aria-current="true">
+                <div class="d-flex bd-highlight">
+                    <div class="p-2 bd-highlight">
+                        <img class="transaction_image" src="http://via.placeholder.com/50x50" alt="Card image cap">
+                    </div>
+                    <div class="p-2 flex-grow-1 bd-highlight">
+                        <h4 class="card-title"><%= data[i].notes -%></h4>
+                        <p class="card-text text-muted"><%= data[i].cName -%></p>
+                    </div>
+                    <div class="p-2 bd-highlight">
+                        <h4 class="card-title"><%= data[i].amount_spend.toLocaleString("en-US", {
+                            style: "currency",
+                            currency: "USD",
+                            minimumFractionDigits: 0
+                        }); -%></h4>
+                        <p class="card-text-style card-text"><%= data[i].date.toLocaleDateString("en-US"); -%></p>
+                    </div>
+                </div>
+            </a>
+        <% }; %>
+    <% } %> %>
+</div> -->
 
-        <% if (data) { %>
-            <% for (var i = 0; i < data.length; i++) { %>
-                <tr>
-                    <td><%= data[i].date.toLocaleDateString("en-US"); -%></td>
-                    <td><%= data[i].cName -%></td>
-                    <td><%= data[i].notes -%></td>
-                    <td><%= data[i].amount_spend -%></td>
-                    <td>
-                        <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
-                        <a href="/update/<%= data[i].id %>" class="btn btn-info">Edit</a>
+<script>
+   
+</script> 
 
-                    </td>
-                </tr>
-            <% }; %>
-        <% } %> %>
-    </tbody>
-</table> -->
 <%- include('partials/_footer.ejs'); -%>
