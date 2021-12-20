@@ -1,22 +1,20 @@
 const controller = {};
 
-//funcion para traer transacciones
-controller.list = (req, res) => {
+//funcion para cargar transacciones y categorias
+controller.listCatAndTrans = (req, res) => {
     req.getConnection((err, conn) => {
         conn.query(`SELECT transactions.id, date, notes, amount_spend, categories.name  as cName
                 FROM transactions  
                 LEFT JOIN categories 
                 ON categories.id = transactions.categories
-                ORDER BY date desc`, (err, transactions) => {
-            if (err) {
-                res.json(err);
-            }
-            // console.log(transactions);
-            res.render('transactions', {
-                data: transactions
+                ORDER BY date desc`, function (err, rows1) {
+                    if (err) throw err;
+                    conn.query(`SELECT * from categories`, function (err, rows2) {
+                        if (err) throw err;
+                        res.render('transactions', {transactions: rows1, categories: rows2});
+                    });
+                });
             });
-        });
-    });
 };
 
 //funcion para agregar transacciones
@@ -71,15 +69,14 @@ controller.update = (req, res) => {
     });
 };
 
-// funcion para cargar categorias
+// funcion para cargar categorias para alimentar el modal de agregar transaccion
 controller.categories_list = (req, res) => {
     req.getConnection((err, conn) => {
         conn.query(`SELECT * from categories`, (err, categories) => {
             if (err) {
                 res.json(err);
             }
-            // console.log(transactions);
-            res.render('categories', {
+            res.render('transactions', {
                 data: categories
             });
         });
@@ -93,7 +90,6 @@ controller.home_list = (req, res) => {
             if (err) {
                 res.json(err);
             }
-            // console.log(transactions);
             res.render('home', {
                 data: categories
             });
@@ -115,6 +111,27 @@ controller.dashboard_list = (req, res) => {
         });
     });
 };
+
+
+
+
+//funcion para traer transacciones. No la necesito porque suplo esto con listCatAndTrans
+// controller.list = (req, res) => {
+//     req.getConnection((err, conn) => {
+//         conn.query(`SELECT transactions.id, date, notes, amount_spend, categories.name  as cName
+//                 FROM transactions  
+//                 LEFT JOIN categories 
+//                 ON categories.id = transactions.categories
+//                 ORDER BY date desc`, (err, transactions) => {
+//             if (err) {
+//                 res.json(err);
+//             }
+//             res.render('transactions', {
+//                 data: transactions
+//             });
+//         });
+//     });
+// };
 
 module.exports = controller;
 
