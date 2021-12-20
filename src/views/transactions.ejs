@@ -8,9 +8,6 @@
     <div class="p-2 bd-highlight"><h2>Q</h2></div>
 </div>
 
-
-<!-- NOTAS: swiper update funciona pero con id quemado. Falta actualizar el swipe de delete -->
-<!-- TESTING SLIDER -->
 <div class="list-group">
     <div>
         <ul id="demo">
@@ -20,14 +17,14 @@
                         <a id="edit_href" href="/update/<%= data[i].id %>" class="list-group-item list_group_item_styles list-group-item-action" aria-current="true">
                             <div class="d-flex bd-highlight">
                                 <div class="p-2 bd-highlight">
-                                    <img class="transaction_image" src="http://via.placeholder.com/50x50" alt="Card image cap">
+                                    <img class="transaction_image" src="https://via.placeholder.com/50/FFFfFf/FFFfFf/" alt="Card image cap">
                                 </div>
                                 <div class="p-2 flex-grow-1 bd-highlight">
                                     <h4 class="card-title" id="transaction_id"><%= data[i].notes -%></h4>
                                     <p class="card-text text-muted"><%= data[i].cName -%></p>
                                 </div>
                                 <div class="p-2 bd-highlight">
-                                    <h4 class="card-title"><%= data[i].amount_spend.toLocaleString("en-US", {
+                                    <h4 class="amount_style card-title"><%= data[i].amount_spend.toLocaleString("en-US", {
                                         style: "currency",
                                         currency: "USD",
                                         minimumFractionDigits: 0
@@ -43,36 +40,5 @@
         </ul>
     </div>
 </div>
-
-<!-- LIST OF ALL TRANSATIONS
-<div class="list-group">
-    <% if (data) { %>
-        <% for (var i = 0; i < data.length; i++) { %>
-            <a href="/update/<%= data[i].id %>" class="list-group-item list_group_item_styles list-group-item-action" aria-current="true">
-                <div class="d-flex bd-highlight">
-                    <div class="p-2 bd-highlight">
-                        <img class="transaction_image" src="http://via.placeholder.com/50x50" alt="Card image cap">
-                    </div>
-                    <div class="p-2 flex-grow-1 bd-highlight">
-                        <h4 class="card-title"><%= data[i].notes -%></h4>
-                        <p class="card-text text-muted"><%= data[i].cName -%></p>
-                    </div>
-                    <div class="p-2 bd-highlight">
-                        <h4 class="card-title"><%= data[i].amount_spend.toLocaleString("en-US", {
-                            style: "currency",
-                            currency: "USD",
-                            minimumFractionDigits: 0
-                        }); -%></h4>
-                        <p class="card-text-style card-text"><%= data[i].date.toLocaleDateString("en-US"); -%></p>
-                    </div>
-                </div>
-            </a>
-        <% }; %>
-    <% } %> %>
-</div> -->
-
-<script>
-   
-</script> 
 
 <%- include('partials/_footer.ejs'); -%>

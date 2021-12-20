@@ -28,7 +28,7 @@ controller.add = (req, res) => {
             res.json(err);
         }
         // console.log(transaction);
-        res.redirect('/');
+        res.redirect('/transactions');
     });
 });
 };
@@ -39,7 +39,7 @@ controller.delete = (req, res) => {
     const { id } = req.params;
     req.getConnection((err, conn) => {
         conn.query('DELETE FROM transactions WHERE id = ?', [id], (err, rows) => {
-            res.redirect('/');
+            res.redirect('/transactions');
         });
     });
 };
@@ -66,7 +66,52 @@ controller.update = (req, res) => {
     const newTransaction = req.body;
     req.getConnection((err, conn) => {
         conn.query('UPDATE transactions set ? WHERE id = ?', [newTransaction, id], (err, rows) => {
-            res.redirect('/');
+            res.redirect('/transactions');
+        });
+    });
+};
+
+// funcion para cargar categorias
+controller.categories_list = (req, res) => {
+    req.getConnection((err, conn) => {
+        conn.query(`SELECT * from categories`, (err, categories) => {
+            if (err) {
+                res.json(err);
+            }
+            // console.log(transactions);
+            res.render('categories', {
+                data: categories
+            });
+        });
+    });
+};
+
+// funcion para cargar home
+controller.home_list = (req, res) => {
+    req.getConnection((err, conn) => {
+        conn.query(`SELECT * from categories`, (err, categories) => {
+            if (err) {
+                res.json(err);
+            }
+            // console.log(transactions);
+            res.render('home', {
+                data: categories
+            });
+        });
+    });
+};
+
+// funcion para cargar dashboard
+controller.dashboard_list = (req, res) => {
+    req.getConnection((err, conn) => {
+        conn.query(`SELECT * from categories`, (err, categories) => {
+            if (err) {
+                res.json(err);
+            }
+            // console.log(transactions);
+            res.render('dashboard', {
+                data: categories
+            });
         });
     });
 };

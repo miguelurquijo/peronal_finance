@@ -13,7 +13,8 @@ lv = mobiscroll.listview('#demo', {
     lang: 'es',             // Specify language like: lang: 'pl' or omit setting to use default
     stages: [{              // More info about stages: https://docs.mobiscroll.com/4-10-9/javascript/listview#opt-stages
         percent: -25,
-        color: 'red',
+        color: '#F95151',
+        icon: 'remove',
         text: 'Delete',
         confirm: true,
         action: function (event, inst) {
@@ -23,7 +24,8 @@ lv = mobiscroll.listview('#demo', {
         }
     }, {
         percent: 25,
-        color: 'green',
+        color: '#5350F7',
+        icon: 'pencil',
         text: 'Edit',
         action: function (event, inst) {
             window.location = event.target.querySelector("#edit_href").getAttribute("href"); // Get href from the element   
