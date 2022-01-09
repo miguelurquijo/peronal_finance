@@ -113,7 +113,7 @@ controller.dashboard_list = (req, res) => {
 };
 
 
-
+// FUNCIONES QUE YA NO ESTOY USANDO
 
 //funcion para traer transacciones. No la necesito porque suplo esto con listCatAndTrans
 // controller.list = (req, res) => {

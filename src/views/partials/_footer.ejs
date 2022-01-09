@@ -4,13 +4,28 @@
 <div class="navbar-container">
     <div class="navbar1 shadow p-3">
         <div class="navbar-inner">
-            <a href="/">Home</a>
-            <a href="/transactions">Transactions</a>
-            <a href="/dashboard">Dashboard</a>
+            <div class="navbar-sections">
+                <a href="/">
+                    <div><img src="images/home.svg" alt="home" class="navbar-item-image" href="/home" onclick="changeImg()" id="myImg"></div>
+                    <p>Home</p>
+                </a>
+            </div>
+            <div class="navbar-sections">
+                <a href="/transactions">
+                    <div><img src="images/transactions_gray.svg" alt="home" class="navbar-item-image" href="/transactions"></div>
+                    <p>Transactions</p>
+                </a>
+            </div>
+            <div class="navbar-sections">
+                <a href="/dashboard">
+                    <div><img src="images/Stats.svg" alt="home" class="navbar-item-image" href="/dashboard" ></div>
+                    <p>Stats</p>
+                </a>
+            </div>
         </div>
     </div>
 </div>
 
-<script src="/js/swipe_effect.js"></script>
+<!-- <script src="/js/swipe_effect.js"></script> -->
 </body>
 </html>
