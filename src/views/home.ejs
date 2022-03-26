@@ -1,5 +1,88 @@
 <%- include('partials/_header.ejs'); -%>
 
-<h1>HOLA HOME</h1>
+<div class="header d-flex bd-highlight">
+    <div class="p-2 flex-grow-1 bd-highlight">    
+        <h2 class="page-title">Hello Miguel</h2>    
+    </div>
+    <div class="p-2 bd-highlight">
+        <h2><img class="" src="images/user-circle.svg" alt=""></h2>
+    </div>
+</div>
+
+<!-- Current month -->
+<div class="month-picker-container">
+    <% var  months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; %> 
+    <% var d = new Date(); %> 
+    <% var monthName=months[d.getMonth()]; %>
+    <h2><%= monthName + " " + d.getDate() + ", " + d.getFullYear() %> </h2>
+</div>
+
+<!-- card with monthly total -->
+<div class="box">
+    <div class="box-content">
+        <h2 class="monthly-balance"><span class="monthly-balance-currency">$ </span><span class="monthly-balance-value">650,000</span><span class="monthly-balance-text"> left</span></h2>
+        <div class="progress-conatiner">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Expense</h4>
+            </div>
+            <div class="modal-body">
+                <form action="/add" method="post" id="my-form-id">
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <% var d = new Date(); %> 
+                        <input type="datetime-local" class="form-control" id="date"
+                            aria-describedby="dateHelp" placeholder="Enter date of the expense" name="date" value="<%= d.getFullYear()+"-"+("0" + (d.getMonth() + 1)).slice(-2)+"-"+("0" + d.getDate()).slice(-2)+"T"+d.getHours()+":"+d.getMinutes()%>"required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="categories">Category</label>
+                        <select class="form-control" id="categories" name="categories" required>
+                            <% if (categories) { %>
+                                <% for (var i = 0; i < categories.length; i++) { %>
+                                    <option value='<%= categories[i].id %>'><%= categories[i].name %></option>
+                                <% }; %>
+                            <% } %> %>
+                        </select>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="notes">Note</label>
+                        <input type="text" class="form-control" id="notes" name="notes"
+                            placeholder="Details of the expense" required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="amount_spend">Amount</label>
+                        <input type="number" class="form-control" id="amount_spend" name="amount_spend"
+                            placeholder="Amount of the expense" inputmode="numeric"
+                            pattern="[0-9]*" required>
+                    </div>
+                    <div class="d-flex justify-content-evenly">
+                        <button type="button" class="modal-botton-secondary btn btn-secondary" data-dismiss="modal" form="my-form-id">Close</button>
+                        <button type="submit" class="modal-botton-primary btn btn-primary">Send</button>
+                    </div>
+
+                </form>
+
+            </div>      
+        </div>
+    </div>
+</div>
+
+<!--Floating button-->
+<a href="#" class="float"><img class="add" src="/images/plus.svg" data-toggle="modal" data-target="#myModal"/></a>
 
 <%- include('partials/_footer.ejs'); -%>

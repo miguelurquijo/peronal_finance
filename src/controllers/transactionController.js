@@ -11,7 +11,24 @@ controller.listCatAndTrans = (req, res) => {
                     if (err) throw err;
                     conn.query(`SELECT * from categories`, function (err, rows2) {
                         if (err) throw err;
-                        res.render('transactions', {transactions: rows1, categories: rows2});
+                        
+                        const groups = rows1.reduce((groups, trans) => { 
+                            const date = trans.date.toDateString().split('T')[0]; 
+                            if (!groups[date]) { 
+                                groups[date] = []; 
+                            } 
+                            
+                            groups[date].push(trans); 
+                                return groups; 
+                        }, {}) 
+                    
+                        const groupArrays = Object.keys(groups).map((date) => { 
+                            return { 
+                                date, 
+                                transaction: groups[date] 
+                            } 
+                        })
+                        res.render('transactions', {transactions: groupArrays, categories: rows2});
                     });
                 });
             });
@@ -43,19 +60,34 @@ controller.delete = (req, res) => {
 };
 
 //funcion para editar transacciones
+// controller.edit = (req, res) => {
+//     const { id } = req.params;
+//     req.getConnection((err, conn) => {
+//         conn.query(`SELECT transactions.id, date, notes, amount_spend, categories.name  as cName, categories.id as cId
+//         FROM transactions  
+//         LEFT JOIN categories 
+//         ON categories.id = transactions.categories WHERE transactions.id = ?`, [ id ], (err, transaction) => {
+//             res.render('transactions_edit', {
+//                 data: transaction[0]
+//             });
+//         });
+//     });
+// };
+
 controller.edit = (req, res) => {
     const { id } = req.params;
-    // console.log(id);
     req.getConnection((err, conn) => {
         conn.query(`SELECT transactions.id, date, notes, amount_spend, categories.name  as cName, categories.id as cId
         FROM transactions  
         LEFT JOIN categories 
-        ON categories.id = transactions.categories WHERE transactions.id = ?`, [ id ], (err, transaction) => {
-            res.render('transactions_edit', {
-                data: transaction[0]
+        ON categories.id = transactions.categories WHERE transactions.id = ?`, [ id ], function (err, rows1) {
+                    if (err) throw err;
+                    conn.query(`SELECT * from categories`, function (err, rows2) {
+                        if (err) throw err;
+                        res.render('transactionsEdit', {transaction: rows1[0], categories: rows2});
+                    });
+                });
             });
-        });
-    });
 };
 
 //funcion para actualiar la editada transacciones
@@ -84,17 +116,39 @@ controller.categories_list = (req, res) => {
 };
 
 // funcion para cargar home
+
+
 controller.home_list = (req, res) => {
     req.getConnection((err, conn) => {
-        conn.query(`SELECT * from categories`, (err, categories) => {
-            if (err) {
-                res.json(err);
-            }
-            res.render('home', {
-                data: categories
+        conn.query(`SELECT transactions.id, date, notes, amount_spend, categories.name  as cName
+                FROM transactions  
+                LEFT JOIN categories 
+                ON categories.id = transactions.categories
+                ORDER BY date desc`, function (err, rows1) {
+                    if (err) throw err;
+                    conn.query(`SELECT * from categories`, function (err, rows2) {
+                        if (err) throw err;
+                        
+                        const groups = rows1.reduce((groups, trans) => { 
+                            const date = trans.date.toDateString().split('T')[0]; 
+                            if (!groups[date]) { 
+                                groups[date] = []; 
+                            } 
+                            
+                            groups[date].push(trans); 
+                                return groups; 
+                        }, {}) 
+                    
+                        const groupArrays = Object.keys(groups).map((date) => { 
+                            return { 
+                                date, 
+                                transaction: groups[date] 
+                            } 
+                        })
+                        res.render('home', {transactions: groupArrays, categories: rows2});
+                    });
+                });
             });
-        });
-    });
 };
 
 // funcion para cargar dashboard

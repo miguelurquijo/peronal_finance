@@ -2,41 +2,43 @@
 
 <div class="header d-flex bd-highlight">
     <div class="p-2 flex-grow-1 bd-highlight">    
-        <h2>Transactions</h2>    
+        <h2 class="page-title">Transactions</h2>    
     </div>
-    <div class="p-2 bd-highlight"><h2>Q</h2></div>
+    <div class="p-2 bd-highlight">
+        <h2><img class="" src="images/plusPurple.svg" alt="Card image cap" data-toggle="modal" data-target="#myModal"></h2>
+    </div>
 </div>
 
+<!-- TRANSACTIONS LIST -->
 <div class="list-group">
     <div>
-        <ul id="demo">
-            <% if (transactions) { %>
-                <% for (var i = 0; i < transactions.length; i++) { %>
-                    <li>
-                        <a id="edit_href" href="/update/<%= transactions[i].id %>" class="list-group-item list_group_item_styles list-group-item-action" aria-current="true">
-                            <div class="d-flex bd-highlight">
-                                <div class="p-2 bd-highlight">
-                                    <img class="transaction_image" src="https://via.placeholder.com/50/FFFfFf/FFFfFf/" alt="Card image cap">
-                                </div>
-                                <div class="p-2 flex-grow-1 bd-highlight">
-                                    <h4 class="card-title" id="transaction_id"><%= transactions[i].notes -%></h4>
-                                    <p class="card-text text-muted"><%= transactions[i].cName -%></p>
-                                </div>
-                                <div class="p-2 bd-highlight">
-                                    <h4 class="amount_style card-title"><%= transactions[i].amount_spend.toLocaleString("en-US", {
-                                        style: "currency",
-                                        currency: "USD",
-                                        minimumFractionDigits: 0
-                                    }); -%>
-                                    </h4>
-                                    <p class="card-text-style card-text"><%= transactions[i].date.toLocaleDateString("en-US"); -%></p>
-                                </div>
+        <% if (transactions) { %>
+            <% for (var i = 0; i < transactions.length; i++) { %>
+                <p class="date-grouper"><%= transactions[i].transaction[0].date.toLocaleString('default', { month: 'short' , day: "numeric"}); -%></p>
+                <% for (var t = 0; t < transactions[i].transaction.length; t++) { %>
+                    <a id="edit_href" href="/update/<%= transactions[i].transaction[t].id %>" class="list-group-item list_group_item_styles list-group-item-action" aria-current="true">
+                        <div class="transaction-card-grouper d-flex bd-highlight">
+                            <div class="transaction-card p-2 bd-highlight">
+                                <img class="transaction_image" src="https://via.placeholder.com/50/FFFfFf/FFFfFf/" alt="Card image cap">
                             </div>
-                        </a>
-                    </li>
+                            <div class="transaction-card p-2 flex-grow-1 bd-highlight">
+                                <h4 class="card-title" id="transaction_id"><%= transactions[i].transaction[t].notes -%></h4>
+                                <p class="card-text text-muted"><%= transactions[i].transaction[t].cName -%></p>
+                            </div>
+                            <div class="transaction-card p-2 bd-highlight">
+                                <h4 class="amount_style card-title"><%= transactions[i].transaction[t].amount_spend.toLocaleString("en-US", {
+                                    style: "currency",
+                                    currency: "USD",
+                                    minimumFractionDigits: 0
+                                }); -%>
+                                </h4>
+                                <p class="card-text-style card-text"><%= transactions[i].transaction[t].date.toLocaleTimeString([], {hour12: false, hour: '2-digit', minute:'2-digit'}) -%></p>
+                            </div>
+                        </div>
+                    </a>
                 <% }; %>
-            <% } %> %>
-        </ul>
+            <% }; %>
+        <% } %> %>
     </div>
 </div>
 
@@ -47,15 +49,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">New Expense</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <form action="/add" method="post" id="my-form-id">
 
                     <div class="form-group">
                         <label for="date">Date</label>
-                        <input type="date" class="form-control" id="date"
-                            aria-describedby="dateHelp" placeholder="Enter date of the expense" name="date" required>
+                        <% var d = new Date(); %> 
+                        <input type="datetime-local" class="form-control" id="date"
+                            aria-describedby="dateHelp" placeholder="Enter date of the expense" name="date" value="<%= d.getFullYear()+"-"+("0" + (d.getMonth() + 1)).slice(-2)+"-"+("0" + d.getDate()).slice(-2)+"T"+d.getHours()+":"+d.getMinutes()%>"required>
                     </div>
                 
                     <div class="form-group">
@@ -81,9 +83,9 @@
                             placeholder="Amount of the expense" inputmode="numeric"
                             pattern="[0-9]*" required>
                     </div>
-                    <div>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" form="my-form-id">Close</button>
-                        <button type="submit" class="btn btn-primary">Send</button>
+                    <div class="d-flex justify-content-evenly">
+                        <button type="button" class="modal-botton-secondary btn btn-secondary" data-dismiss="modal" form="my-form-id">Close</button>
+                        <button type="submit" class="modal-botton-primary btn btn-primary">Send</button>
                     </div>
 
                 </form>
@@ -94,6 +96,6 @@
 </div>
 
 <!--FLOATING BUTTOM-->
-<a href="#" class="float"><img class="add" src="/images/plus.svg" data-toggle="modal" data-target="#myModal"/></a>
+<!-- <a href="#" class="float"><img class="add" src="/images/plus.svg" data-toggle="modal" data-target="#myModal"/></a> -->
 
 <%- include('partials/_footer.ejs'); -%>

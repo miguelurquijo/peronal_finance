@@ -1,31 +1,29 @@
 
 
 <!--NAVBAR-->
-<div class="navbar-container">
+<div class="navbar-container" >
     <div class="navbar1 shadow p-3">
         <div class="navbar-inner">
-            <div class="navbar-sections">
-                <a href="/">
-                    <div><img src="images/home.svg" alt="home" class="navbar-item-image" href="/home" onclick="changeImg()" id="myImg"></div>
-                    <p>Home</p>
+            <div id="home-section" class="navbar-sections">
+                <a href="/" >
+                    <div><img id="home-image" src="/images/home.svg" alt="home" class="navbar-item-image" href="/home"></div>
+                    <p id="home-text" class="footer-text">Home</p>
                 </a>
             </div>
-            <div class="navbar-sections">
+            <div id="transaction-section" class="navbar-sections">
                 <a href="/transactions">
-                    <div><img src="images/transactions_gray.svg" alt="home" class="navbar-item-image" href="/transactions"></div>
-                    <p>Transactions</p>
+                    <div><img id="transactions_image" src="/images/transactions_gray.svg" alt="home" class="navbar-item-image" href="/transactions"></div>
+                    <p class="footer-text">Transactions</p>
                 </a>
             </div>
-            <div class="navbar-sections">
+            <div id="stats-section"class="navbar-sections">
                 <a href="/dashboard">
-                    <div><img src="images/Stats.svg" alt="home" class="navbar-item-image" href="/dashboard" ></div>
-                    <p>Stats</p>
+                    <div><img id="dashboard_image" src="/images/Stats.svg" alt="home" class="navbar-item-image" href="/dashboard"></div>
+                    <p class="footer-text">Stats</p>
                 </a>
             </div>
         </div>
     </div>
 </div>
-
-<!-- <script src="/js/swipe_effect.js"></script> -->
 </body>
 </html>

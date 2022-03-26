@@ -1,15 +1,25 @@
+
+*{
+    font-family: 'DM Sans', sans-serif;
+}
+
 body {
     background-color: #fafafa !important;
+
 }
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 
 /* HEADER WHERE TITLE AND ICONS ARE */
 .header {
-    padding: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 40px;
 }
 
 h4 {
     color: #404040 !important;
-    font-family: DM Sans;
+    font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -20,28 +30,26 @@ h4 {
     text-align: right;
 }
 
-p {
+.list-group p {
     color: #7c7c7c !important;
 }
 
+.go-back-button {
+    padding-top: 32px;
+    padding-left: 32px;
+}
+
+
 /* TRANSACTION LIST VIEW */
-ul {
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: #fafafa !important;
-}
-
-li {
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: #fafafa !important;
-}
-
 .list-group {
     margin-bottom: 0 !important;
     border-width: 0px;
     padding-right: 32px !important;
     padding-left: 16px !important;
+}
+
+.date-grouper {
+    padding-left: 32px;
 }
 
 .transaction_image {
@@ -58,6 +66,14 @@ li {
 .list_group_item_styles {
     background-color: #fafafa !important;
     border: none !important;
+}
+
+.transaction-card {
+    border-bottom: 0px solid #EBEBEB !important;
+}
+
+.card-title {
+    color: #4C4C4C !important;
 }
 
 /* ADD FLOATING BUTTON */
@@ -84,13 +100,15 @@ li {
     align-items: center;
     display:flex;
     justify-content:center;
+    transition: top 0.3s; 
+
 }
 
 .navbar1 {
     overflow: hidden;
     background-color: #ffffff;
     position: fixed;
-    bottom: 32px;
+    bottom: 24px;
     height: 65px;
     width: 320px;
     display: flex;
@@ -117,35 +135,191 @@ li {
     justify-content: space-between;
 }
 
-.navbar1 a:hover {
-    background: #f1f1f1;
-    color: black;
+.navbar-sections a p {
+    padding-top: 5px;
+    color: #7c7c7c;
+    
 }
 
-a p {
-    color: red;
+.active-navbar-sections  {
+    color: black;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.active-navbar-sections a p {
     padding-top: 5px;
+    color: #7c7c7c;
+    
+}
+
+.active-navbar-sections a p {
+    color: #5350F6;
 }
 
 .navbar-item-image {
     width: 22.68px;
-    padding-top: 11px;}
+    padding-top: 11px;
+}
 
 
 /* MODAL */
+.modal-content {
+    background-color: #fafafa !important;
+    border-radius: 10px !important;
+
+}
+
 .modal-dialog {
-    top: 20px
+    top: 30%;
+
+}
+
+.modal-botton-primary {
+    background-color: #5350F7 !important;
+    border-radius: 7px;
+    width: 149px;
+    height: 52px;
+}
+
+.modal-botton-secondary {
+    border-radius: 7px;
+    width: 149px;
+    height: 52px;
+}
+
+.form-group  input {
+    height: 46px;
+    background-color: #ffffff !important;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 7px;
+    box-shadow: 0px 0px 0px rgba(186, 186, 186, 0.15);
+}
+
+.form-group  input:focus {
+    border-color: #5350F7;
+    box-shadow: 0px 0px 0px rgba(186, 186, 186, 0.15);
+
+}
+
+.form-group  select {
+    height: 46px;
+    background-color: #ffffff !important;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 7px;
+    box-shadow: 0px 0px 0px rgba(186, 186, 186, 0.15);
+}
+
+.form-group  select:focus {
+    border-color: #5350F7;
+    box-shadow: 0px 0px 0px rgba(186, 186, 186, 0.15);
+
 }
 
 /* EDIT FORM CONTAINER   */
 .edit-form-container {
- padding: 32px;
+    padding: 32px;
 }
 
 .delete-button-style {
     background-color: #F95151 !important;
+    border-radius: 7px;
+    width: 149px;
 }
+
+.delete-button-style p {
+    padding-top: 7px ;
+}
+
 
 .update-button-style {
     background-color: #5350F7 !important;
+    border-radius: 7px;
+    width: 149px;
+    height: 52px;
 }
+
+/* MONTHLY CARD CONTAINER */
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.box .box-content {
+    width: 100px;
+    height: 100px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 5px rgba(186, 186, 186, 0.15);
+    border-radius: 10px;
+    width: 100%;
+}
+
+.monthly-balance {
+    padding-left: 16px;
+}
+
+.monthly-balance-currency {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 29px;
+    color: #5350F7;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.monthly-balance-value {
+    font-style: normal;
+    font-weight: medium;
+    font-size: 22px;
+    line-height: 29px;
+    color: #4C4C4C;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.monthly-balance-text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #D3D5DF;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.progress-conatiner {
+    padding: 16px;
+}
+
+.progress {
+    height: 6px !important;
+}
+
+.progress-bar {
+    background-color: #5350F7 !important;
+}
+
+.month-picker-container {
+    padding-left: 32px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    
+}
+
+.month-picker-container h2{
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: #7C7C7C;
+}
+
