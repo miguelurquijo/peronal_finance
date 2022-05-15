@@ -1,6 +1,6 @@
 const express = require('express');
-const controller = require('../controllers/transactionController');
 const router = express.Router();
+const passport = require('passport');
 const transactionController = require('../controllers/transactionController');
 
 router.get('/transactions', transactionController.listCatAndTrans); 

@@ -1,4 +1,6 @@
 const controller = {};
+const passport = require('passport');
+const helpers = require('../lib/helpers');
 
 //funcion para cargar transacciones y categorias
 controller.listCatAndTrans = (req, res) => {
@@ -167,25 +169,6 @@ controller.dashboard_list = (req, res) => {
 };
 
 
-// FUNCIONES QUE YA NO ESTOY USANDO
-
-//funcion para traer transacciones. No la necesito porque suplo esto con listCatAndTrans
-// controller.list = (req, res) => {
-//     req.getConnection((err, conn) => {
-//         conn.query(`SELECT transactions.id, date, notes, amount_spend, categories.name  as cName
-//                 FROM transactions  
-//                 LEFT JOIN categories 
-//                 ON categories.id = transactions.categories
-//                 ORDER BY date desc`, (err, transactions) => {
-//             if (err) {
-//                 res.json(err);
-//             }
-//             res.render('transactions', {
-//                 data: transactions
-//             });
-//         });
-//     });
-// };
 
 module.exports = controller;
 

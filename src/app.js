@@ -4,9 +4,21 @@ const morgan = require('morgan');
 const mysql = require('mysql');
 const myConnection = require('express-myconnection', {multipleStatements: true});
 const app = express();
+const session = require('express-session');
+const validator = require('express-validator');
+const passport = require('passport');
+const flash = require('connect-flash');
+const MySQLStore = require('express-mysql-session')(session);
 
-// importing routes
+
+
+
+//initialization
+require('./lib/passport');
+
+//importing routes
 const transactionRoutes = require('./routes/transaction');
+const userRoutes = require('./routes/user');
 
 
 //settings
@@ -27,9 +39,19 @@ app.use(myConnection(mysql, {
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
+app.use(session({
+    secret: 'faztmysqlnodemysql',
+    resave: false,
+    saveUninitialized: false,
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 //routes
-app.use('/', transactionRoutes); //en el tutorial lo llaman customerRouter
+app.use('/', transactionRoutes); //aca debo poner todas las rutas que quiere agregar (user, transaction, balance, categories, etc)
+app.use('/', userRoutes); 
+
 
 
 //static files
